@@ -1,4 +1,4 @@
-# weather
+
 # Weather Clean Architecture App
 
 A simple Flutter weather app to practice Clean Architecture, API integration, and state management (Provider).
@@ -10,44 +10,36 @@ A simple Flutter weather app to practice Clean Architecture, API integration, an
 - Saves last searched city (bonus)
 - Clean Architecture: Domain / Data / Presentation
 
-## 🧰 Tech Stack
-- **Flutter** (SDK)
-- **Provider** (State Management)
-- **http** (API calls)
-- **OpenWeatherMap API** (Data source)
-
-## 📸 Screenshots
-
-| Home Screen (Loading) | Weather Results | Error State |
-| :-------------------: | :-------------: | :---------: |
-| <img src="./screenshots/loading.png" width="200"> | <img src="./screenshots/result.png" width="200"> | <img src="./screenshots/error.png" width="200"> |
+## 🧰 Tech
+- Flutter
+- Provider (state)
+- http (API calls)
+- OpenWeather API (https://openweathermap.org/)
 
 ## 🔑 Setup (Very Important)
+1) Get a free API key from OpenWeather: https://home.openweathermap.org/api_keys
+2) Open `lib/features/weather/data/datasources/weather_api_service.dart`
+3) Replace `const String _apiKey = "YOUR_API_KEY_HERE";` with your key.
 
-1.  **Get a free API key** from [OpenWeatherMap](https://home.openweathermap.org/api_keys). (It may take a few hours for the key to activate).
-2.  **Clone the repository** and open it in your IDE.
-    ```bash
-    git clone https://github.com/your-username/weather-app.git
-    cd weather-app
-    ```
-3.  **Add your API key:**
-    - Open the file: `lib/features/weather/data/datasources/weather_api_service.dart`
-    - Find the line: `const String _apiKey = "YOUR_API_KEY_HERE";`
-    - **Replace `"YOUR_API_KEY_HERE"` with your actual key**, keeping the quotes.
-    ```dart
-    // Example after change
-    const String _apiKey = "abc123def456ghi789jkl012";
-    ```
+## ▶️ Run
+```bash
+flutter pub get
+flutter run
+```
 
-## ▶️ How to Run
-
-1.  **Get dependencies:**
-    ```bash
-    flutter pub get
-    ```
-2.  **Run the app on a connected device or emulator:**
-    ```bash
-    flutter run
-    ```
-
-## 🧱 Project Structure (Clean Architecture)
+## 🧱 Structure
+```
+lib/
+ └── features/weather/
+      ├── domain/
+      │    ├── entities/weather.dart
+      │    ├── repositories/i_weather_repository.dart
+      │    └── usecases/get_weather_by_city.dart
+      ├── data/
+      │    ├── datasources/weather_api_service.dart
+      │    ├── models/weather_model.dart
+      │    └── repositories/weather_repository_impl.dart
+      └── presentation/
+           ├── pages/home_page.dart
+           └── providers/weather_provider.dart
+```
